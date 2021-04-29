@@ -1,5 +1,6 @@
 import tkinter as tk
 from pytube import YouTube
+import time
 
 root = tk.Tk()
 root.geometry('500x500')
@@ -17,11 +18,14 @@ yt_link_enter = tk.Entry(root, width = 70,textvariable = yt_link).pack(fill=tk.X
 
 
 def Yt_Downloader():
+    try:
+        yt_url =YouTube(str(yt_link.get()))
+        yt_video = url.streams.first()
+        yt_video.download()
+        finished=tk.Label(root, text = 'DOWNLOADED COMPLETE  POGGERS!', font = 'arial 15').place(x= 50 , y = 210)
+    except:
+        error=tk.Label(root,text="You have either put in a wrong URL or you didn't enter anything.Please try again with a valid youtube video URL.")
 
-    yt_url =YouTube(str(yt_link.get()))
-    yt_video = url.streams.first()
-    yt_video.download()
-    finished=tk.Label(root, text = 'DOWNLOADED COMPLETE  POGGERS!', font = 'arial 15').place(x= 50 , y = 210)
 
 
 
